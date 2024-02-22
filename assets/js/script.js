@@ -8,7 +8,10 @@ var generatedPassword = []
 
 function generatePassword() {
   generatedPassword = []
+  
+  // Don't forget to remove this line
   console.log("Hey! You clicked the button!")
+
   //  1. Prompt the user for how they want to make password
   //    a. Length?
   var passwordLength = prompt("How long do you want your password? (At least 8 characters and no more than 128 characters)")
@@ -29,15 +32,24 @@ function generatePassword() {
       if (containsSymbols) {
         generatedPassword.push(SYMBOLS)
       }
+    var passwordPool = []
+    passwordPool = generatedPassword.join().split(",")
+
+    var finalPassword = []
+    for (var i = 0; i < passwordLength; i++) {
+      var randomPassword = Math.floor(Math.random() * passwordPool.length);
+      finalPassword.push(passwordPool[randomPassword])
+    }
+
+  return finalPassword.join("")
+ 
   } else {
     alert("Please enter a valid response.")
     generatePassword()
   }
   //  2. Validate the input.
-  
   //  3. Generate password based on user's answers.
   //  4. Display new generated password.
-  return `Enter variable ${generatedPassword} here, but randomized.`
 }
 
 // Get references to the #generate element
@@ -54,3 +66,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
