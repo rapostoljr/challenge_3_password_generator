@@ -1,55 +1,58 @@
 // Assignment code here
 var LOWERCASE_LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 var UPPERCASE_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-var NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
-var SYMBOLS = ['!', '#', '$', '%', '&', '(', ')', '*', '+',]
+var NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var SYMBOLS = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 var generatedPassword = []
 
 function generatePassword() {
   generatedPassword = []
-  
-  // Don't forget to remove this line
-  console.log("Hey! You clicked the button!")
 
   //  1. Prompt the user for how they want to make password
   //    a. Length?
-  var passwordLength = prompt("How long do you want your password? (At least 8 characters and no more than 128 characters)")
+  var passwordLength = prompt("How long do you want your password? (At least 8 characters and no more than 128 characters)");
   if (passwordLength >= 8) {
   //    b. Uppercase, lowercase, numbers, special letters?
-    var containsUpper = confirm("Do you want your password to contain capital letters?")
-      if (containsUpper) {
-        generatedPassword.push(LOWERCASE_LETTERS)
-        generatedPassword.push(UPPERCASE_LETTERS)
-      } else {
-        generatedPassword.push(LOWERCASE_LETTERS)
-      }
-    var containsNumbers = confirm("Do you want your password to contain numbers?")
-      if (containsNumbers) {
-        generatedPassword.push(NUMBERS)
-      }
-    var containsSymbols = confirm("Do you want your password to contain special characters?")
-      if (containsSymbols) {
-        generatedPassword.push(SYMBOLS)
-      }
-    var passwordPool = []
-    passwordPool = generatedPassword.join().split(",")
-
-    var finalPassword = []
-    for (var i = 0; i < passwordLength; i++) {
-      var randomPassword = Math.floor(Math.random() * passwordPool.length);
-      finalPassword.push(passwordPool[randomPassword])
-    }
-
-  return finalPassword.join("")
+  //  2. Validate the input.
  
   } else {
-    alert("Please enter a valid response.")
+    alert("Please enter a valid response.");
     generatePassword()
   }
-  //  2. Validate the input.
-  //  3. Generate password based on user's answers.
-  //  4. Display new generated password.
+
+  var containsUpper = confirm("Do you want your password to contain capital letters?");
+  if (containsUpper) {
+    // loop array
+    generatedPassword.push(LOWERCASE_LETTERS);
+    generatedPassword.push(UPPERCASE_LETTERS);
+  } else {
+    generatedPassword.push(LOWERCASE_LETTERS);
+  }
+var containsNumbers = confirm("Do you want your password to contain numbers?");
+  if (containsNumbers) {
+    generatedPassword.push(NUMBERS);
+  }
+var containsSymbols = confirm("Do you want your password to contain special characters?");
+  if (containsSymbols) {
+    generatedPassword.push(SYMBOLS);
+  }
+
+//  3. Generate password based on user's answers.
+//  4. Display new generated password.
+console.log(generatedPassword)
+var passwordPool = []
+passwordPool = generatedPassword.join().split(",");
+
+var finalPassword = []
+for (var i = 0; i < passwordLength; i++) {
+  var randomPassword = Math.floor(Math.random() * passwordPool.length);
+  finalPassword.push(passwordPool[randomPassword]);
+}
+
+console.log(finalPassword);
+return finalPassword.join("");
+
 }
 
 // Get references to the #generate element
