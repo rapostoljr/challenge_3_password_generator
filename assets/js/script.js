@@ -18,12 +18,11 @@ function generatePassword() {
  
   } else {
     alert("Please enter a valid response.");
-    generatePassword()
+    return generatePassword()
   }
 
   var containsUpper = confirm("Do you want your password to contain capital letters?");
   if (containsUpper) {
-    // loop array
     generatedPassword.push(LOWERCASE_LETTERS);
     generatedPassword.push(UPPERCASE_LETTERS);
   } else {
@@ -40,9 +39,8 @@ var containsSymbols = confirm("Do you want your password to contain special char
 
 //  3. Generate password based on user's answers.
 //  4. Display new generated password.
-console.log(generatedPassword)
 var passwordPool = []
-passwordPool = generatedPassword.join().split(",");
+passwordPool = generatedPassword.join(",").split(",");
 
 var finalPassword = []
 for (var i = 0; i < passwordLength; i++) {
@@ -50,7 +48,6 @@ for (var i = 0; i < passwordLength; i++) {
   finalPassword.push(passwordPool[randomPassword]);
 }
 
-console.log(finalPassword);
 return finalPassword.join("");
 
 }
