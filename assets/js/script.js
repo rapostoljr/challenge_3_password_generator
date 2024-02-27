@@ -12,7 +12,7 @@ function generatePassword() {
   //  1. Prompt the user for how they want to make password
   //    a. Length?
   var passwordLength = prompt("How long do you want your password? (At least 8 characters and no more than 128 characters)");
-  if (passwordLength >= 8) {
+  if (passwordLength >= 8 && passwordLength <= 128) {
   //    b. Uppercase, lowercase, numbers, special letters?
   //  2. Validate the input.
  
